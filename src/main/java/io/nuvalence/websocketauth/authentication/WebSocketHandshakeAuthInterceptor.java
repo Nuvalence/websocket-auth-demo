@@ -44,7 +44,7 @@ public class WebSocketHandshakeAuthInterceptor extends HttpSessionHandshakeInter
         try {
             return UUID.fromString(UriComponentsBuilder.fromHttpRequest(request).build()
                     .getQueryParams().get("authentication").get(0));
-        } catch (NullPointerException e) {
+        } catch (IllegalArgumentException | NullPointerException e) {
             return null;
         }
     }
